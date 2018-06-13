@@ -7,6 +7,8 @@ When installing a fresh build of my application and attempting to log in, it fai
 ## Solution
 A native-code XHR function that javascript code can call. It makes that call, then the application needs to wait for at least 3 seconds on iPhone6 onwards and 12 seconds on iPhone5 before attempting further XHRs in your application. If you wait long enough, those XHRs will all fail because no cookies are remembered. But if it waits long enough then subsequent XHRs from javascript will have the cookies that were received from the native-code XHR.
 
+compatible with cordova plugin: [Plugin](https://github.com/apache/cordova-plugin-wkwebview-engine)
+
 ## Usage
 ```
 document.addEventListener("deviceready", onDeviceReady, false);
