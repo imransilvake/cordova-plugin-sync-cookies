@@ -1,7 +1,7 @@
 # Cordova-Plugin-Sync-Cookies
 A cordova plugin to sync cookies for the very first run when the app is installed on the iPhone device.
 
-## Problem
+## Problem (in WKWebView)
 When installing a fresh build of my application and attempting to log in, it fails because the authentication cookie sent by the server is never stored. Closing the application and re-launching fixes the issue.
 
 ## Solution
