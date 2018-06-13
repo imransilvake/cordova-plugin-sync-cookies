@@ -7,7 +7,7 @@ Compatible with cordova plugin: [Plugin](https://github.com/apache/cordova-plugi
 When installing a fresh build of the application and attempting to log in, it fails because the authentication cookie sent by the server is never stored. Closing the application and re-launching fixes the issue.
 
 ## Solution
-A native-code XHR function that javascript code can call. It makes that call, then the application needs to wait for atleast 3 seconds on iPhone6 onwards and 12 seconds on iPhone5 before attempting further XHRs in your application. If you don't wait long enough, those XHRs will all fail because no cookies are remembered. But if you wait long enough then subsequent XHRs from javascript will have the cookies that were received from the native-code XHR.
+A native-code XHR function that javascript code can call. It makes that call, then the application needs to wait for atleast 3 seconds on iPhone6 and onwards and 12 seconds on iPhone5 before attempting further XHRs in your application. If you don't wait long enough, those XHRs will all fail because no cookies are remembered. But if you wait long enough then subsequent XHRs from javascript will have the cookies that were received from the native-code XHR.
 
 ## Usage
 add this code either in `index.js` or `app.componenet.ts`.
@@ -18,6 +18,8 @@ function onDeviceReady() {
 	if (window.plugins.cookie) {
 		window.plugins.cookie.executeXHR(SERVICE_URL, function (response) {
 			// response: ok
+			// wait atleast 3 seconds on iPhone6 and onwards and
+			// 12 seconds on iPhone5 and then call other XHRs.
 		}, function (error) {
 			console.log("error: " + error);
 		});
