@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="cordova-plugin-cookies-sync" version="1.0.0">
+	<!-- description -->
+	<name>Cookies Sync</name>
+	<description>Fix the cookies first time load problem.</description>
+	<author>TourismusSuite</author>
+	<license>MIT</license>
+	<keywords>cookies, sync</keywords>
+
+	<!-- engine -->
+	<engines>
+		<engine name="cordova" version=">=3.2.0"/>
+	</engines>
+
+	<!-- module -->
+	<js-module src="www/cookies-sync.js" name="CookiesSync">
+		<clobbers target="window.plugins.cookie"/>
+	</js-module>
+
+	<!-- ios -->
+	<platform name="ios">
+		<config-file target="config.xml" parent="/*">
+			<feature name="CookiesSync">
+				<param name="ios-package" value="CookiesSync"/>
+			</feature>
+		</config-file>
+
+		<header-file src="src/ios/CookiesSync.h"/>
+		<source-file src="src/ios/CookiesSync.m"/>
+	</platform>
+</plugin>
