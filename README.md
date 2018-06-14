@@ -34,10 +34,10 @@ SERVICE_URL: can be any dummy json object e.g:
 
 ## Extra
 you can use this code below to get:
-- Detect device app or desktop
-- Detect iPhone or any other device
-- Get iOS version number and change timeout accordingly
-- Timeout for first time and then normal for all other runs
+- Detect if app or desktop
+- Detect if iPhone or other device
+- Get iOS version number and change the setTimeout value accordingly
+- setTimeout for first time (app only) and then run normally for all the next runs
 
 ```
 const app = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1;
