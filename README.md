@@ -47,7 +47,6 @@ let isIphone = false;
 let iOSVersionTimeout = 3000; // 3 secs
 
 if (app) {
-
 	let agent = window.navigator.userAgent;
 	let start = agent.indexOf( 'OS ' );
 	isIphone = (agent.indexOf( 'iPhone' ) > -1) && start > -1 
@@ -60,7 +59,8 @@ if (app) {
 	}
 }
 
-if(app && isIphone && localStorage.getItem('ALREADY_LAUNCHED') === null) {
+// logic: app or desktop
+if(app && isIphone && localStorage.getItem('ALREADY_LAUNCHED') === null) { // run first time on app only
 	setTimeout( () => {
 	  // start your next XHR requests
 	}, iOSVersionTimeout);
