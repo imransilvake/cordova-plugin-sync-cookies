@@ -34,5 +34,43 @@ SERVICE_URL: can be any dummy json object e.g:
 }
 ```
 
+## Extra
+you can use this code below to get:
+- Detect device app or desktop
+- Detect iPhone or any other device
+- Get iOS version number and change timeout accordingly
+- Timeout for first time and then normal for all other runs
+
+```
+const app = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1;
+let isIphone = false;
+let iOSVersionTimeout = 3000; // 3 secs
+
+if (app) {
+
+	let agent = window.navigator.userAgent;
+	let start = agent.indexOf( 'OS ' );
+	isIphone = (agent.indexOf( 'iPhone' ) > -1) && start > -1 
+
+	if(isIphone) { // if device is iPhone
+	  let iOSVersion = window.Number(agent.substr( start + 3, 3 ).replace( '_', '.' ));
+	  if(iOSVersion < 11) {
+	    iOSVersionTimeout = 12000; // 12 secs
+	  }
+	}
+}
+
+if(app && isIphone && !localStorage.getItem('ALREADY_LAUNCHED')) {
+	setTimeout( () => {
+	  // start your next XHR requests
+	}, iOSVersionTimeout);
+
+	// save item
+	localStorage.setItem("ALREADY_LAUNCHED", "true");
+} else {
+	// start your next XHR requests
+}
+```
+
 ## Credits
 Grant Patterson: for providing native-code XHR function.
