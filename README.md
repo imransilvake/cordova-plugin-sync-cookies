@@ -32,7 +32,7 @@ SERVICE_URL: can be any dummy json object e.g:
 }
 ```
 
-## Extra
+## Extra (JS)
 you can use this code below to get:
 - Detect if app or desktop
 - Detect if iPhone or other device
