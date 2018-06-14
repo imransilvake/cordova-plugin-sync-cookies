@@ -60,7 +60,7 @@ if (app) {
 	}
 }
 
-if(app && isIphone && !localStorage.getItem('ALREADY_LAUNCHED')) {
+if(app && isIphone && localStorage.getItem('ALREADY_LAUNCHED') === null) {
 	setTimeout( () => {
 	  // start your next XHR requests
 	}, iOSVersionTimeout);
