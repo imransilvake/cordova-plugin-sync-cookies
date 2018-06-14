@@ -40,27 +40,27 @@ you can use this code below to get:
 - setTimeout for first time (app only) and then run normally for all the next runs
 
 ```
-const app = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1;
+const app = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
 let isIphone = false;
 let iOSVersionTimeout = 3000; // 3 secs
 
 if (app) {
 	let agent = window.navigator.userAgent;
-	let start = agent.indexOf( 'OS ' );
-	isIphone = (agent.indexOf( 'iPhone' ) > -1) && start > -1 
+	let start = agent.indexOf('OS ');
+	isIphone = (agent.indexOf('iPhone') > -1) && start > -1
 
-	if(isIphone) { // if device is iPhone
-	  let iOSVersion = window.Number(agent.substr( start + 3, 3 ).replace( '_', '.' ));
-	  if(iOSVersion < 11) {
-	    iOSVersionTimeout = 12000; // 12 secs
-	  }
+	if (isIphone) { // if device is iPhone
+		let iOSVersion = window.Number(agent.substr(start + 3, 3).replace('_', '.'));
+		if (iOSVersion < 11) {
+			iOSVersionTimeout = 12000; // 12 secs
+		}
 	}
 }
 
 // logic: app or desktop
-if(app && isIphone && localStorage.getItem('ALREADY_LAUNCHED') === null) { // run first time on app only
-	setTimeout( () => {
-	  // start your next XHR requests
+if (app && isIphone && localStorage.getItem('ALREADY_LAUNCHED') === null) { // run first time on app only
+	setTimeout(() => {
+		// start your next XHR requests
 	}, iOSVersionTimeout);
 
 	// save item
