@@ -18,8 +18,6 @@ function onDeviceReady() {
 	if (window.plugins.cookie) {
 		window.plugins.cookie.executeXHR(SERVICE_URL, function (response) {
 			// response: ok
-			// wait atleast 3 seconds on iPhone6 and onwards and
-			// 12 seconds on iPhone5 and then call other XHRs.
 		}, function (error) {
 			console.log("error: " + error);
 		});
