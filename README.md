@@ -10,7 +10,7 @@ When installing a fresh build of the application and attempting to log in, it fa
 A native-code XHR function that javascript code can call. It makes that call, then the application **needs to wait** for atleast **3 seconds on iPhone6 and onwards** and **12 seconds on iPhone5** before attempting further XHRs in your application. If you don't wait long enough, those XHRs will all fail because no cookies are remembered. But if you wait long enough then subsequent XHRs from javascript will have the cookies that were received from the native-code XHR.
 
 ## Usage
-add this code either in `index.js` or `app.componenet.ts`.
+add this code either in `index.js` or `app.component.ts`.
 
 ```
 document.addEventListener("deviceready", onDeviceReady, false);
